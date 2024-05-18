@@ -85,3 +85,10 @@ public static byte[] readInputStream(InputStream inStream) {
     return ret; 
 }
 ```
+
+##### 4.注释是用来解释实现的
+
+注释是用来解释实现的，不是用来 “屏蔽” 代码，确定不再使用的代码，请及时清理掉，不要在项目中遗留 “垃圾” ，你自己都不用的代码，还指望谁会来使用？
+如果觉得将来有可能重新使用这些代码，也放心清理，因为 git 会记录这些变更（是的，是谁写的烂代码，git 都会记住）。
+
+![image](../images/comment.png)
