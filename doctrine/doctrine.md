@@ -92,3 +92,7 @@ public static byte[] readInputStream(InputStream inStream) {
 如果觉得将来有可能重新使用这些代码，也放心清理，因为 git 会记录这些变更（是的，是谁写的烂代码，git 都会记住）。
 
 ![image](../images/comment.png)
+
+##### 5. 及时保存你的工作成果
+
+按照实现的功能，切分好每次代码提交并通过 Commit Message 描述好提交的内容。
