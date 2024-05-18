@@ -33,3 +33,55 @@ if (condition) {
 多关注 IDE 给你提示的这些下划线（即使这些代码很可能不是我们自己写的，请让它变好）。
 
 ![image](../images/duplication.png)
+
+##### 3. 写好注释
+
+不要迷信代码即文档，因为每个开发人员水平不一，写好注释交代好正在实现的功能（尤其是业务代码），可以给将来阅读这份代码的人带来很多的方便
+（也可能是你自己），减轻很多心智负担。大家都很忙，就不要让别人猜测你的意图了。
+
+过分愚蠢的注释也不可取，下面是一个真实例子。
+
+```java
+public static byte[] readInputStream(InputStream inStream) {  
+   byte []ret = null;
+   ByteArrayOutputStream outStream = null;
+   try {
+        outStream = new ByteArrayOutputStream();  
+        //创建一个Buffer字符串  
+        byte[] buffer = new byte[1024];  
+        //每次读取的字符串长度，如果为-1，代表全部读取完毕  
+        int len = 0;  
+        //使用一个输入流从buffer里把数据读取出来  
+        while( (len=inStream.read(buffer)) != -1 ){  
+            //用输出流往buffer里写入数据，中间参数代表从哪个位置开始读，len代表读取的长度  
+            outStream.write(buffer, 0, len);  
+        }  
+        
+        if(inStream!=null){
+            //关闭输入流  
+            inStream.close();  
+        }
+        //把outStream里的数据写入内存  
+        
+        ret  = outStream.toByteArray();
+        
+        if(outStream!=null){
+            outStream.close();
+        }
+    } catch (Exception e) {
+        logger.error(ExceptionUtil.stacktraceToString(e));
+    }finally {
+        if(outStream!=null){
+
+            IoUtil.close(outStream);
+            
+            if(inStream!=null){
+
+                IoUtil.close(inStream);
+            }
+        }
+    }
+
+    return ret; 
+}
+```
