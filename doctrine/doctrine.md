@@ -137,3 +137,7 @@ public static byte[] readInputStream(InputStream inStream) {
 
 5. Automate<br/>
    自动化。在内华达工厂和弗里蒙特工厂犯下的一个大错就是我一开始试图将每个步骤进行自动化改造。我们本应该先质疑所有要求，删除不必要的部分和流程，把问题筛出来、处理掉，然后再推进自动化。
+
+##### 推荐阅读 《 Rails 信条 》
+
+[https://ruby-china.org/wiki/the-rails-doctrine](https://ruby-china.org/wiki/the-rails-doctrine)
