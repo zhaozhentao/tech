@@ -9,9 +9,9 @@ git 的基本操作，否则请尽快学习。
 
 三个项目地址如下：
 
-* [后端]()
-* [管理后台前端]()
-* [小程序]()
+* 后端：[https://git.haday.cn/sxw-xkmm/sfa-api-backend](https://git.haday.cn/sxw-xkmm/sfa-api-backend)
+* 小程序：[https://git.haday.cn/sxw-xkmm/sfa-uniapp](https://git.haday.cn/sxw-xkmm/sfa-uniapp)
+* 管理后台前端：[https://git.haday.cn/sxw-xkmm/sfa-pc-front](https://git.haday.cn/sxw-xkmm/sfa-pc-front)
 
 ##### 3. 本地调试开发（后端）
 
