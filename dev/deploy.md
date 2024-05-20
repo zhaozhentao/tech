@@ -15,3 +15,17 @@
 其中 SFA 后端和管理后台的流水线挂在 “[小康买买B端运维](https://devops.haday.cn/#/devops/pipeline-manage?type=project&id=392735045667393536&name=%E5%B0%8F%E5%BA%B7%E4%B9%B0%E4%B9%B0B%E7%AB%AF%E8%BF%90%E7%BB%B4&category=AGILE&organizationId=3)” 下。
 
 ![image](../images/zhu.jpg)
+
+##### 2. 应用的访问路径
+
+应用的访问路径区分测试环境和生产环境，下面是两个环境的相关地址。
+
+测试环境
+
+* 管理后台 [http://10.254.2.40:8091](http://10.254.2.40:8091)
+
+生产环境
+
+* 管理后台 [https://sfa-admin.xkmm.cn](https://sfa-admin.xkmm.cn)
+
+小程序端通过 HBuilder 启动项目，通过不同环境的配置去访问对应环境的 API 。
