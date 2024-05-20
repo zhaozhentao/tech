@@ -7,6 +7,11 @@
 * 开发环境：T.FA{日期}{编号}-sfa-api-backend
 * 生产环境：vR.FA{日期}{编号}-sfa-api-backend
 
-下面是 SFA 后端应用具体的 tag。
+下面是 SFA 后端应用具体的 tag（管理后台的 tag 格式具体可参考 git 的提交记录，这里不再重复）。
 
 ![image](../images/tag.jpg)
+
+部署时，可以在 “[猪齿鱼](https://devops.haday.cn)” （帐号应该已经为你开通好）上看到具体的流水线执行情况。
+其中 SFA 后端和管理后台的流水线挂在 “[小康买买B端运维](https://devops.haday.cn/#/devops/pipeline-manage?type=project&id=392735045667393536&name=%E5%B0%8F%E5%BA%B7%E4%B9%B0%E4%B9%B0B%E7%AB%AF%E8%BF%90%E7%BB%B4&category=AGILE&organizationId=3)” 下。
+
+![image](../images/zhu.jpg)
