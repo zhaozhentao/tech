@@ -3,5 +3,5 @@
   * [应用部署](dev/deploy.md)
   * [问题排查/日志查看](dev/log.md)
 
-* 开发约定
+* 约定
   * [一些开发习惯](doctrine/doctrine.md)
