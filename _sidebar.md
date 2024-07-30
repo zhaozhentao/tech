@@ -1,6 +1,6 @@
 * 训练营
   * [初级练习](camp/primary.md)
-  * [中级练习](camp/primary.md)
+  * [中级练习](camp/middle.md)
   * [高级练习](camp/primary.md)
 
 * 约定
