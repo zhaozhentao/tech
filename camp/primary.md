@@ -34,3 +34,11 @@ public class ExpressionCalculator {
 ![image](../images/student.jpg)
 
 需要对数据类型有基本的判断。
+
+### 常用类库
+
+要求：使用 Java 标准库的日期和时间类，格式化输出当前日期和时间。
+
+示例：
+
+![image](../images/now.png)
