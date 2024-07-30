@@ -26,3 +26,11 @@ class MyClass {
 示例：
 
 ![image](../images/reflection.png)
+
+### 多线程编程
+
+练习编写一个多线程程序，实现一个生产者产生消息，两个消费者消费消息的场景。
+
+示例：
+
+![image](../images/threads.png)

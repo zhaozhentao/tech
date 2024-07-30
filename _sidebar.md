@@ -2,6 +2,3 @@
   * [初级练习](camp/primary.md)
   * [中级练习](camp/middle.md)
   * [高级练习](camp/high.md)
-
-* 约定
-  * [一些开发习惯](doctrine/doctrine.md)
