@@ -14,11 +14,9 @@ import java.util.Scanner;
 public class ExpressionCalculator {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
-        String expression = scanner.nextLine();
-        
-        scanner.close();
+        try (Scanner scanner = new Scanner(System.in)) {
+            String expression = scanner.nextLine();
+        }
     }
 }
 ```
