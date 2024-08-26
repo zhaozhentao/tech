@@ -3,7 +3,7 @@
 SFA 中新增/修改组织架构同步至企业微信流程如下：
 
 1. 检查创建或修改的组织架构的父级（企业微信中的parentid）是否合法，包括：是否为空，是否存在，是否在 <font color="red">外企德科（用人单位）</font> 、<font color="red">佩琪（用人单位）</font>、<font color="red">猎聘（用人单位）</font>、<font color="red">嘉驰（用人单位）</font>、<font color="red">58魔方（用人单位）</font>其子架构中（通过企业微信接口 [获取单个部门详情](https://developer.work.weixin.qq.com/document/path/95351) https://qyapi.weixin.qq.com/cgi-bin/department/get 逐级往上查找，直到根节点，检查有没有经过这些组织架构），不能在前面提到的 5 个组织架构所在层级直接创建组织架构。如果父级组织架构不合法，停止新增或修改组织架构的同步。
-2. 调用企业微信接口 [创建部门](https://developer.work.weixin.qq.com/document/path/90205) https://qyapi.weixin.qq.com/cgi-bin/department/create 或 [更新部门](https://developer.work.weixin.qq.com/document/path/90206) https://qyapi.weixin.qq.com/cgi-bin/department/update ，进行组织架构的的同步。
+2. 调用企业微信接口 [创建部门](https://developer.work.weixin.qq.com/document/path/90205) https://qyapi.weixin.qq.com/cgi-bin/department/create 或 [更新部门](https://developer.work.weixin.qq.com/document/path/90206) https://qyapi.weixin.qq.com/cgi-bin/department/update ，进行组织架构的的同步。（创建部门后，需要保存微信返回的部门 id 到 SFA 数据库中）
 
 调用创建/更新部门接口传递的参数包括:
 
