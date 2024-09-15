@@ -8,6 +8,7 @@ GoAccess 常见使用场景如下
 
 1. 检查是否有异常流量（异常的 ip 访问数量、扫描不存在的路径、提交可执行脚本、可疑的 User-Agent 和 OS）
 2. 检查应用流量是否合理（接口访问次数是否正常）
+3. 简单的独立访问用户统计
 
 ### GoAccess 的使用
 
@@ -37,15 +38,39 @@ $ goaccess your_access.log
 
 <iframe src="../files/all.html" height="800px"></iframe>
 
-#### 统计结果的人工分析
+#### 统计结果分析
 
 根据上面的分析结果可以看到，静态资源传输流量为 125.57 GiB，占总流量约 67% 。通过对静态资源传输数据量大小进行排序，可以看到 /htnew/static/js/chunk-vendors.js 文件消耗流量最高，单个文件消耗流量 5.03 GiB。
 
-接下来，根据上面的文件路径重新到 Nginx 日志过滤一下，可以确定其完整的访问路径。得到完整的访问路径后在浏览器中访问，可以看到 http 响应头中出现的缓存控制字段。
+接下来，根据上面的文件路径重新到 Nginx 日志过滤一下，可以确定其完整的访问路径。得到完整的访问路径后在浏览器中访问，可以看到 http 响应头中出现的缓存控制字段如下图所示。
 
 ![image](../images/goaccess/img.png)
 
-由于该字段的出现，导致用户每次访问小康相关的前端页面时，都需要完整加载所有的前端资源 ( js、css、image )，无法利用客户端本身的缓存，造成用户端流量的浪费，增加了服务器的带宽压力。
+由于该字段的出现，导致用户每次访问小康相关的前端页面时，都需要完整加载所有的前端资源 ( js、css、image )，无法利用客户端本身的缓存，造成用户端流量的浪费，同时也增加了服务器的带宽压力。
+
+#### 单页应用的访问
+
+<div style="text-align: center">
+    <img src="../images/goaccess/nginx1.svg">
+</div>
+
+通常情况下，当浏览器访问一个网站时，会缓存以下类型的资源以加快后续访问的速度并减少网络流量：
+
+1. HTML 页面，主页面内容，即页面的 HTML 文件，可能会被缓存
+2. CSS 文件
+3. JavaScript 文件
+4. 图像文件，图片资源（如 .jpg, .png, .gif, .svg 等）会被缓存，尤其是网站中的 logo、背景图等不常变化的图片。
+
+
+<div style="text-align: center">
+    <img src="../images/goaccess/nginx2.svg">
+</div>
+
+发布新版本，
+
+<div style="text-align: center">
+    <img src="../images/goaccess/nginx3.svg">
+</div>
 
 #### 问题原因和优化方案
 
