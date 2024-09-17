@@ -48,6 +48,8 @@ $ goaccess your_access.log
 
 由于该字段的出现，导致用户每次访问小康相关的前端页面时，都需要完整加载所有的前端资源 ( js、css、image )，无法利用客户端本身的缓存，造成用户端流量的浪费，同时也增加了服务器的带宽压力。
 
+接下来分析一下为什么响应头中会出现 `Cache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0`。
+
 #### 单页应用的访问
 
 <div style="text-align: center">
@@ -66,7 +68,11 @@ $ goaccess your_access.log
     <img src="../images/goaccess/nginx2.svg">
 </div>
 
-发布新版本，
+一切正常...
+
+#### 版本更新
+
+当项目组有新版本的前端资源发布时，
 
 <div style="text-align: center">
     <img src="../images/goaccess/nginx3.svg">
