@@ -287,3 +287,26 @@ CDN 获取源站资源的过程被称为“内容分发” ，目前主要有以
 > 对于“CDN 如何管理（更新）资源”这个问题，同样没有统一的标准可言，尽管在 HTTP 协议中，关于缓存的 Header 定义中确实是有对 CDN 这类共享缓存的一些指引性参数，
 譬如 Cache-Control 的 s-maxage，但是否要遵循，完全取决于 CDN 本身的实现策略。更令人感到无奈的是，由于大多数网站的开发和运维人员并不十分了解 HTTP 缓存机制，
 所以导致如果 CDN 完全照着 HTTP Headers 来控制缓存失效和更新，效果反而会相当的差，还可能引发其他问题。因此，CDN 缓存的管理就不存在通用的准则。---《凤凰架构》
+
+接下来请看下面一个例子：一源地址为 http://coding-api.bozhen.live/jobs.jpg 的图片资源，通过 CDN 地址 http://oss-cdn.bozhen.live/jobs.jpg 加速。
+在源站中，加入和前面类似的 Nginx 配置。
+
+```conf
+location ~*\.(js|css|png|jpg)$ {
+    add_header Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0";
+}
+```
+
+在浏览器直接访问源站地址 http://coding-api.bozhen.live/jobs.jpg 可以看到如下情况。
+
+<div style="text-align: center">
+    <img src="./images/goaccess/apijobs.png">
+</div>
+
+通过 CDN 加速地址 http://oss-cdn.bozhen.live/jobs.jpg 访问可以看到如下情况。
+
+<div style="text-align: center">
+    <img src="./images/goaccess/cdnjobs.png">
+</div>
+
+通过 CDN 地址加载的图片，和通过源站加载的地址返回了一样的 Cache-Control 响应头...
