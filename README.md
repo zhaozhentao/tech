@@ -53,3 +53,17 @@ $ jstack 654733 | grep -A 10 9fdb1
 <div style="text-align: center">
     <img src="./images/java/jstack.png">
 </div>
+
+### Useful Scripts
+
+#### show-busy-java-threads
+
+```bash
+$ ./show-busy-java-threads 3 10 -c 5 -a top.log
+```
+
+每 3 秒刷新一次，一共执行 10 次，获取 CPU 消耗 top 5 的线程状态，结果保存到 top.log 文件中。
+
+<div style="text-align: center">
+    <img src="./images/java/show.png">
+</div>
