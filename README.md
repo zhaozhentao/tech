@@ -22,7 +22,7 @@
     <img src="./images/java/cpu_high.png">
 </div>
 
-> 启动 htop 后，大写 S，勾选 `Display options` -> `Tree View` 和 `Show custom thread names`
+> 启动 htop 后，大写 S，勾选 `Display options` 然后勾选 `Tree View` 和 `Show custom thread names` 可以看到进程下产生的线程状态。
 
 ##### top
 
@@ -58,6 +58,11 @@ $ jstack 654733 | grep -A 10 9fdb1
 
 #### show-busy-java-threads
 
+前面基于 top 和 jstack 的排查过程基本够用，但步骤略繁琐，更简单的是借助其他现成的工具比如 github 上的一个开源项目 [useful-scripts](https://github.com/oldratlee/useful-scripts) 中的一个脚本 show-busy-java-threads ，
+该脚本可以通过一行命令的操作就完成前面通过 top 和 jstack 的几步操作。
+
+下面是一个简单的示例，通过一条命令找出之前的繁忙线程。
+
 ```bash
 $ ./show-busy-java-threads 3 10 -c 5 -a top.log
 ```
@@ -66,4 +71,10 @@ $ ./show-busy-java-threads 3 10 -c 5 -a top.log
 
 <div style="text-align: center">
     <img src="./images/java/show.png">
+</div>
+
+命令执行完后，检查输出的 top.log 文件，可以看到繁忙线程的信息。
+
+<div style="text-align: center">
+    <img src="./images/java/show2.png">
 </div>
