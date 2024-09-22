@@ -44,4 +44,12 @@
 
 经过第 1 步后，通常已经可以找出产生高 CPU 消耗的线程，然后使用 jdk 自带的工具 jstack 查看线程状态。
 
+```bash
+$ jstack 654733 | grep -A 10 9fdb1
+```
 
+> 上面的命令中 654733 为 java 进程号，9fdb1 为线程号 654769 的 16 进制显示
+
+<div style="text-align: center">
+    <img src="./images/java/jstack.png">
+</div>
