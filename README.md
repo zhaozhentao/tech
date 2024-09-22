@@ -309,4 +309,23 @@ location ~*\.(js|css|png|jpg)$ {
     <img src="./images/goaccess/cdnjobs.png">
 </div>
 
-通过 CDN 地址加载的图片，和通过源站加载的地址返回了一样的 Cache-Control 响应头...
+通过 CDN 地址加载的图片，和通过源站加载的地址返回着一样的 Cache-Control 响应头...
+
+有察觉到什么问题了吗？
+
+通过命令行工具 curl 去加载一下 CDN 加速地址，同时观察源站的 Nginx 日志可以看到如下情况：
+
+<div style="text-align: center">
+    <img src="./images/goaccess/curl.png">
+</div>
+
+通过 CDN 地址访问 5 次图片，Nginx 中就有 5 次访问记录！也就是说 CDN 并没有真正起到缓存作用，用户的每一次访问都发生了回源操作，用户请求“穿透”到了源站服务器。
+
+可以看出，阿里云 CDN 本身的缓存策略，也受 Cache-Control 的影响，因为源站返回的资源带有 Cache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0 响应头，
+所以 CDN 节点也没有把资源缓存起来，最终导致用户每次的访问都会产生回源操作。
+
+和前面的处理办法一样，在 Nginx 中加入相关的 Cache-Control 配置后，重新通过 CDN 路径去访问图片，只有第一次访问时，发生了回源操作，后续访问直接从 CDN 返回资源，不再经过源站服务器。
+
+<div style="text-align: center">
+    <img src="./images/goaccess/curl2.png">
+</div>
