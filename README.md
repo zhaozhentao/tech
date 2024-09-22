@@ -121,3 +121,11 @@ $ thread id
 <div style="text-align: center">
     <img src="./images/java/arthas_thread2.png">
 </div>
+
+#### 停止
+
+Arthas 通过增强类来实现 Java 进程的诊断，在诊断完毕后，需要调用下面命令，重置掉所有增强类。
+
+```bash
+$ stop
+```
