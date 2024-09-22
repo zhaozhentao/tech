@@ -78,3 +78,46 @@ $ ./show-busy-java-threads 3 10 -c 5 -a top.log
 <div style="text-align: center">
     <img src="./images/java/show2.png">
 </div>
+
+### Arthas 阿尔萨斯
+
+Arthas 是一款线上监控诊断产品，通过全局视角实时查看应用 load、内存、gc、线程的状态信息，并能在不修改应用代码的情况下，对业务问题进行诊断，
+包括查看方法调用的出入参、异常，监测方法执行耗时，类加载信息等，大大提升线上问题排查效率。
+
+#### 安装与启动
+
+```bash
+$ curl -O https://arthas.aliyun.com/arthas-boot.jar
+
+$ java -jar arthas-boot.jar
+```
+
+arthas-boot 运行起来后，选择需要诊断的 Java 进程 attach，成功后就可以看到如下图所示。
+
+<div style="text-align: center">
+    <img src="./images/java/arthas.png">
+</div>
+
+#### 使用 Arthas 查看繁忙线程
+
+和前面一样，接下来看看如何利用 Arthas 查找 Java 进程中的繁忙线程。
+
+在 Arthas 控制台中，输入不带参数的命令 thread ，可以看到 JVM 中的线程，默认按 CPU 耗时降序排列。
+
+```bash
+$ thread
+```
+
+<div style="text-align: center">
+    <img src="./images/java/arthas_thread.png">
+</div>
+
+找到最繁忙的线程 id 后，输入下面命令可以看到具体线程状态。
+
+```bash
+$ thread id
+```
+
+<div style="text-align: center">
+    <img src="./images/java/arthas_thread2.png">
+</div>
