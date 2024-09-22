@@ -324,8 +324,16 @@ location ~*\.(js|css|png|jpg)$ {
 可以看出，阿里云 CDN 本身的缓存策略，也受 Cache-Control 的影响，因为源站返回的资源带有 Cache-Control: no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0 响应头，
 所以 CDN 节点也没有把资源缓存起来，最终导致用户每次的访问都会产生回源操作。
 
-和前面的处理办法一样，在 Nginx 中加入相关的 Cache-Control 配置后，重新通过 CDN 路径去访问图片，只有第一次访问时，发生了回源操作，后续访问直接从 CDN 返回资源，不再经过源站服务器。
+处理办法和前面一样，在 Nginx 中加入相关的 Cache-Control 配置后，重新通过 CDN 路径去访问图片，只有第一次访问时，发生了回源操作，后续访问直接从 CDN 返回资源，不再经过源站服务器。
 
 <div style="text-align: center">
     <img src="./images/goaccess/curl2.png">
 </div>
+
+#### 成果
+
+1. https://app.xkmm.cn 、https://app1.xkmm.cn 前端资源转移到 CDN 中。
+2. https://ht.xkmm.cn 、https://ht1.xkmm.cn 因部分用户只能在内网中访问，前端资源未转移到 CDN ，但已正常启用客户端缓存。
+3. 原本通过 https://images.xkmm.cn 下载的 Android APK 安装包转移到 CDN 中。
+
+目前剩余最大流量接口 https://api.xkmm.cn/showPic2 正在优化中。
