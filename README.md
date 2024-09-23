@@ -139,4 +139,37 @@ $ stop
 ```
 
 
+### 内存问题分析
+
+在 Java 中进行内存 dump（即 heap dump）通常用于调试内存泄漏或优化内存使用。你可以通过多种方法来生成 Java 进程的内存 dump，通常可以使用以下两种方法：
+
+1. 使用 jmap 生成 heap dump ，jmap -dump:live,format=b,file={heap_dump_path} {pid}
+2. 使用 JVM 参数生成内存 dump，-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/path/to/dump
+
+生成 dump file 后，可以借助一些可视化工具去排查具体问题，下面是 JProfiler 简单使用介绍，以 7 月 1 日生成的 heap dump 文件为例。
+
+1. 先查找业务代码相关的类，检查有没有实例数量特别大的（根据经验，业务代码出错的可能性更大，更容易产生大量实例）。下图可以看到 `MdmMemberVO` 实例数量超过 100W ，很不正常。
+
+<div style="text-align: center">
+    <img src="./images/java/dump.png">
+</div>
+
+2. 查找大实例对象的出处，双击上图的 `MdmMemberVO` 一行。
+
+<div style="text-align: center">
+    <img src="./images/java/mm.png">
+</div>
+
+选中其中一个对象后 “在图表中显示” 查看对象的引用情况。
+
+<div style="text-align: center">
+    <img src="./images/java/mm2.png">
+</div>
+
+已经可以看到该对象的引用由一个 ArrayList 对象持有，ArrayList 又被 DefaultResultHandler 持有。
+
+<div style="text-align: center">
+    <img src="./images/java/mm3.png">
+</div>
+
 ### Just for fun
