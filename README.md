@@ -10,7 +10,9 @@
 
 接下来围绕 Java 开发中，最常见的两种线上问题（高 <font style="color: red">CPU</font> / <font style="color: red">内存</font> 消耗），介绍几种排查工具和使用方法。
 
-下面通过一个模拟案例，说明一下如何排查 Java 进程中的高 CPU 消耗情况。
+### 场景模拟
+
+下面是一个模拟案例，借助一个死循环来产生高 CPU 消耗，介绍一下如何排查 Java 进程中的高 CPU 消耗情况。
 
 <div style="text-align: center">
     <img src="./images/java/loopapi.png">
@@ -20,9 +22,9 @@
 
 #### 1 找出占用 CPU 的线程
 
-##### htop
-
 借助 top 或 htop 等工具，找出具体占用 CPU 高的进程/线程。
+
+##### htop
 
 如果服务器中有 htop ，可以通过打开 tree view 和显示线程名，看到如下内容。
 
