@@ -64,6 +64,8 @@ $ jstack 654733 | grep -A 10 9fdb1
     <img src="./images/java/jstack.png">
 </div>
 
+从上图中已经可以看出线程 654769 ，目前正在运行的代码行号。
+
 ### Useful Scripts
 
 #### show-busy-java-threads
@@ -88,6 +90,88 @@ $ ./show-busy-java-threads 3 10 -c 5 -a top.log
 <div style="text-align: center">
     <img src="./images/java/show2.png">
 </div>
+
+截取部分日志如下...
+
+```log
+================================================================================
+2024-09-23 13:41:41.768397925 [1/10]: ./show-busy-java-threads 3 10 -c 5 -a top.log
+================================================================================
+
+[1] Busy(99.9%) thread(665785/0xa28b9) stack of java process(665746) under user(tao):
+"http-nio-8080-exec-1" #22 daemon prio=5 os_prio=0 cpu=19932.72ms elapsed=25.52s tid=0x00007f549e5fa800 nid=0xa28b9 runnable  [0x00007f5416076000]
+java.lang.Thread.State: RUNNABLE
+at com.keras.controllers.TestController.loop(TestController.java:13)
+at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(java.base@11.0.24/Native Method)
+at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(java.base@11.0.24/NativeMethodAccessorImpl.java:62)
+at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(java.base@11.0.24/DelegatingMethodAccessorImpl.java:43)
+at java.lang.reflect.Method.invoke(java.base@11.0.24/Method.java:566)
+at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)
+at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072)
+at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965)
+at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+at javax.servlet.http.HttpServlet.service(HttpServlet.java:529)
+at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:114)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:96)
+at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:168)
+at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:928)
+at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1794)
+at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+at java.lang.Thread.run(java.base@11.0.24/Thread.java:829)
+
+[2] Busy(0.0%) thread(665746/0xa2892) stack of java process(665746) under user(tao):
+
+[3] Busy(0.0%) thread(665747/0xa2893) stack of java process(665746) under user(tao):
+"DestroyJavaVM" #34 prio=5 os_prio=0 cpu=2690.53ms elapsed=25.49s tid=0x00007f549c016000 nid=0xa2893 waiting on condition  [0x0000000000000000]
+java.lang.Thread.State: RUNNABLE
+
+[4] Busy(0.0%) thread(665748/0xa2894) stack of java process(665746) under user(tao):
+"GC Thread#0" os_prio=0 cpu=40.20ms elapsed=28.51s tid=0x00007f549c02e000 nid=0xa2894 runnable
+
+[5] Busy(0.0%) thread(665749/0xa2895) stack of java process(665746) under user(tao):
+"G1 Main Marker" os_prio=0 cpu=0.56ms elapsed=28.51s tid=0x00007f549c08c800 nid=0xa2895 runnable
+```
 
 ### Arthas 阿尔萨斯
 
@@ -184,5 +268,7 @@ $ stop
 <div style="text-align: center">
     <img src="./images/java/mm5.png">
 </div>
+
+> 上述过程仅适用于堆内存分析，不受 JVM 管理的堆外内存不适用。
 
 ### Just for fun
