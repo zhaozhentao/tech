@@ -47,3 +47,111 @@ void sayHello() {
     printf("hello\n");
 }
 ```
+
+### 1.8 参数
+
+C 语言中，所有参数都是通过 "值" 传递给函数的，这意味着，如果函数修改了参数的值，那么修改后的值不会影响调用函数的变量。
+
+```clike
+#include <stdio.h>
+
+void change(int a) {
+    a = 1;
+}
+
+int main() {
+    int a = 0;
+    
+    change(a);
+  
+    printf("a = %d\n", a);
+    
+    return 0;
+}
+```
+
+> 如果想要在 change 函数中国改变 a 的值，那么需要使用指针。
+
+### 1.9 字符数组
+
+前面提到了，在 C 语言中，如果函数修改了参数的值，那么修改后的值不会影响调用函数的变量，但如果参数是一个数组，情况就不同了，传递给函数的值是数组起始元素的地址（也可以称为指针）。
+
+被调用的函数中，可以通过数组下标修改数组元素的值。
+
+```clike
+#include <stdio.h>
+
+// 这里没有做数组长度的检查
+void changeArr(char arr[]) {
+    arr[0] = 'w';
+    arr[1] = 'o';
+    arr[2] = 'r';
+    arr[3] = 'l';
+    arr[4] = 'd';
+    arr[5] = '\0';
+}
+
+int main() {
+    char arr[6] = "hello";
+    
+    printf("调用函数前 arr: %s\n", arr);
+    
+    changeArr(arr);
+    
+    // 从输出可以看到，arr 中的内容被改变了
+    printf("调用函数后 arr: %s\n", arr);
+
+    return 0;
+}
+```
+
+练习:
+1. 尝试编写一个 reverse 函数（reverse 是反转的意思），将字符数组中的内容反转。
+
+### 1.10 外部变量与作用域
+
+在 C 语言中，变量的作用域是定义变量所在的函数内，如果变量在函数外定义，那么这个变量就是全局变量。函数中的每个局部变量只有在函数被调用时存在，在函数执行完毕退出时消失。
+
+除了局部变量之外，还可以定义位于所有函数外部的变量，所有函数都可以访问这个变量。
+
+```clike
+#include <stdio.h>
+
+void change() {
+    a = 1;
+}
+
+int a = 0;
+
+int main() {
+    printf("a = %d\n", a);
+    
+    change();
+    
+    printf("a = %d\n", a);
+}
+```
+
+extern 关键字
+
+上面的例子，假如 change 函数定义在 int a = 0; 之前，那么就需要使用 extern 关键字。
+
+```clike
+#include <stdio.h>
+
+void change() {
+    // 声明这是一个外部变量，其定义不在本函数中
+    extern int a;
+    a = 1;
+}
+
+int a = 0;
+
+int main() {
+    printf("a = %d\n", a);
+    
+    change();
+    
+    printf("a = %d\n", a);
+}
+```
