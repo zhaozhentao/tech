@@ -74,16 +74,48 @@ void smg_display(void) {
   u8 i=0;
 
   for(i=0;i<8;i++) {
-    switch(i)//位选
+    switch(i) // 位选
     {
-      case 0: LSC=1;LSB=1;LSA=1;break;
-      case 1: LSC=1;LSB=1;LSA=0;break;
-      case 2: LSC=1;LSB=0;LSA=1;break;
-      case 3: LSC=1;LSB=0;LSA=0;break;
-      case 4: LSC=0;LSB=1;LSA=1;break;
-      case 5: LSC=0;LSB=1;LSA=0;break;
-      case 6: LSC=0;LSB=0;LSA=1;break;
-      case 7: LSC=0;LSB=0;LSA=0;break;
+      case 0: 
+        LSC = 1;
+        LSB = 1;
+        LSA = 1;
+        break;
+      case 1: 
+        LSC = 1;
+        LSB = 1;
+        LSA = 0;
+        break;
+      case 2: 
+        LSC = 1;
+        LSB = 0;
+        LSA = 1;
+        break;
+      case 3: 
+        LSC = 1;
+        LSB = 0;
+        LSA = 0;
+        break;
+      case 4: 
+        LSC = 0;
+        LSB = 1;
+        LSA = 1;
+        break;
+      case 5: 
+        LSC = 0;
+        LSB = 1;
+        LSA = 0;
+        break;
+      case 6: 
+        LSC = 0;
+        LSB = 0;
+        LSA = 1;
+        break;
+      case 7: 
+        LSC = 0;
+        LSB = 0;
+        LSA = 0;
+        break;
     }
     SMG_A_DP_PORT = gsmg_code[i]; // 传送段选数据
     delay_10us(100); // 延时一段时间，等待显示稳定
