@@ -84,3 +84,7 @@ void main()
 代码中，使用宏定义将 P0 口定义为 `SMG_A_DP_PORT`，这样在后续的代码中就可以直接使用 `SMG_A_DP_PORT` 来操作 P0 口。
 
 宏定义是一种预处理指令，在编译前会进行文本替换，使用 `#define` 关键字定义。当编译器遇到 `SMG_A_DP_PORT` 时，会自动将其替换为 `P0`。这种方式不仅可以提高代码的可读性，还可以方便后续修改 - 如果需要更换端口，只需要修改宏定义处的 P0 即可，而不用修改所有用到该端口的代码。
+
+### 视频
+
+[动态数码管视频](https://www.bilibili.com/video/BV1Fq4y177wm/?spm_id_from=333.337.search-card.all.click&vd_source=b8ed8b20bb8136e36167e41851432be8)
