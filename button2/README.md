@@ -15,6 +15,8 @@
 
 <img style="width: 480px;" src="../button2/image.png">
 
+矩阵键盘由行和列组成，矩阵键盘的扫描方法有两种：行扫描和列扫描。
+
 ### 实验代码
 
 ```clike
@@ -52,6 +54,7 @@ void delay_10us(u16 ten_us)
 	while (ten_us--);
 }
 
+// 矩阵键盘列式扫描
 u8 key_matrix_ranks_scan(void)
 {
 	u8 key_value = 0;
@@ -212,3 +215,7 @@ void main()
 	}
 }
 ```
+
+### 矩阵键盘视频
+
+https://www.bilibili.com/video/BV1kj411T7c3/?spm_id_from=333.337.search-card.all.click&vd_source=b8ed8b20bb8136e36167e41851432be8
