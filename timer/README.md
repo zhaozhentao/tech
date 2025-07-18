@@ -6,11 +6,9 @@
 
 为了使用定时器，我们需要先理解单片机的几个知识点。
 
-1. 振荡周期: 为单片机提供定时信号的振荡源的周期（晶振周期或外加振荡周期），下图为开发板中使用的晶振，振荡频率为 11.0592MHZ (11.0592MHz = 11,059,200 Hz = 11,059,200 次/秒)
+1. 振荡周期: 为单片机提供定时信号的振荡源的周期（晶振周期或外加振荡周期），下图为开发板中使用的晶振，振荡频率为 11.0592MHz (11.0592MHz = 11,059,200 Hz = 11,059,200 次/秒)
 
-<div style="width: 500px">
-	<img src="./image1.png"/>
-</div>
+![](./image1.png)
 
 2. 机器周期: 1 个机器周期等于 12 个振荡周期
 
@@ -32,7 +30,6 @@
 #include "reg52.h"
 
 typedef unsigned int u16;
-typedef unsigned char u8;
 
 sbit LED1 = P2^0;
 
@@ -53,7 +50,7 @@ void main()
 
 	while (1)
 	{			
-							
+		// CPU 此时在空转，定时器在自增，不占用 CPU
 	}		
 }
 
@@ -72,45 +69,7 @@ void time0() interrupt 1
 }
 ```
 
-### 串口通信
+> 练习：修改一下程序，每 2ms 发生一次中断，保持每 1s 翻转一下 LED 灯。
 
-```clike
-#include "reg52.h"
+相关视频： https://www.bilibili.com/video/BV1MY4y1u7eY/?spm_id_from=333.337.search-card.all.click&vd_source=b8ed8b20bb8136e36167e41851432be8
 
-typedef unsigned int u16;
-typedef unsigned char u8;
-
-void uart_init(u8 baud)
-{
-	TMOD |= 0X20;  // 设置计数器工作方式2
-	SCON = 0X50;   // 设置为工作方式1
-	PCON = 0X80;   // 波特率加倍
-	TH1 = baud;    // 计数器初始值设置
-	TL1 = baud;
-	ES = 1;        // 打开接收中断
-	EA = 1;        // 打开总中断
-	TR1 = 1;       // 打开计数器		
-}
-
-void main()
-{	
-	uart_init(0XFA); // 波特率为9600
-
-	while (1)
-	{			
-							
-	}		
-}
-
-// 串口通信中断函数
-void uart() interrupt 4
-{
-	u8 rec_data;
-
-	RI = 0;            // 清除接收中断标志位
-	rec_data = SBUF;   // 存储接收到的数据
-	SBUF = rec_data;   // 将接收到的数据放入到发送寄存器
-	while (!TI);       // 等待发送数据完成
-	TI = 0;            // 清除发送完成标志位				
-}
-```
