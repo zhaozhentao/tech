@@ -104,6 +104,7 @@ void main()
 }
 
 // 串口通信中断函数
+// interrupt 4 表明，这个函数是串口的中断处理函数
 void uart() interrupt 4
 {
 	u8 rec_data;
@@ -115,3 +116,5 @@ void uart() interrupt 4
 	TI = 0;            // 清除发送完成标志位				
 }
 ```
+
+相关视频: https://www.bilibili.com/video/BV1y34y147s5/?spm_id_from=333.337.search-card.all.click&vd_source=b8ed8b20bb8136e36167e41851432be8
