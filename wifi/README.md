@@ -9,7 +9,7 @@ AT+CWMODE=1
 // 连接 wifi 网络，帐号密码
 AT+CWJAP_DEF="cotti coffee","Cotti123"
 
-// 查看密码
+// 查看 IP 地址
 AT+CIFSR
 
 // 开启单连接
@@ -77,4 +77,13 @@ int main() {
     endwin(); // 关闭ncurses模式
     return 0;
 }
+```
+
+编译代码
+
+```shell
+# ubuntu 下需要先安装相关库才能使用 ncurses
+$ sudo apt install libncurses5-dev libncursesw5-dev
+
+$ gcc key.c -o key -lncurses 
 ```
