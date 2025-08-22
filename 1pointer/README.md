@@ -39,3 +39,85 @@ double *p;
 char c;
 char *p;
 ```
+
+##### 1.1 指针的运算符
+
+既然知道指针保存的是某个内存格子的地址，然后我们就可以用这个地址进行读写。
+
+```clike
+// 读取指针指向的内存格子保存的内容。
+int main() {
+    int a = 1;   // 定义一个 int 变量
+    int *p = &a; // 让 p 指向 a 变量
+
+    int c;
+
+    c = *p;      // 这里 *p 是取值操作，表示取出 p 所指向的内存格子中的数据。
+    printf("此时 c 等于 %d\n", c);
+
+    *p = 2;      // 这里表示向 p 指向的内存地址写入 2
+    printf("此时 a 等于 %d\n", a);
+
+    return 0;
+}
+```
+
+> &取址 和 *取值，是指针两个重要操作。
+
+#### 2. 指针与函数参数
+
+C语言中是以值传递的方式，将参数的值传递给被调用函数，被调用函数不能直接修改主调函数中变量的值。
+
+```clike
+void swap(int x, int y) {
+    int temp;
+
+    temp = a;
+    x = y;
+    y = temp;
+}
+
+int main() {
+    int x = 1;
+    int y = 2;
+
+    swap(x, y);
+    return 0;
+}
+```
+
+上面的函数执行完后，main 函数中的 x 和 y 保持原来的值不变，没有实现到交换的功能。为了实现交换功能，可以按照下面的方式。
+
+```clike
+void swap(int *px, int *py) {
+    int temp;
+
+    temp = *px;
+    *px = *py;
+    *py = temp;
+}
+
+int main() {
+    int x = 1;
+    int y = 2;
+
+    swap(&x, &y);
+
+    return 0;
+}
+```
+
+练习
+
+```clike
+// 编写一个函数，调用后需要把最小的值放到 a 中，第二小的值放到 b 中，最大的值放到 c 中。
+int main() {
+    int a = 3;
+    int b = 2;
+    int c = 1;
+
+    return 0;
+}
+```
+
+小结，这里需要掌握的是函数参数中如何定义指针变量，以及其常见的用途。
