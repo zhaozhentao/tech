@@ -83,3 +83,111 @@ int tomSex;
 ```
 
 如果没有结构体，就会出现上面这种，大量重复的代码，非常影响编码，影响效率。
+
+##### 2. 结构与函数
+
+了解如何定义结构体和声明结构体变量后，就可以继续学习一下结构体是如何应用在函数中的，主要包括：作为函数参数、作为函数的返回值。
+
+###### 2.1 结构体作为返回值
+
+首先看看作为返回值时的例子，下面的例子中，函数的返回值类型为 `struct point`，表示函数将会返回一个结构体变量。
+
+```clike
+#include <stdio.h>
+
+struct point {
+        int x;
+        int y;
+};
+
+// 返回的类型是 point
+struct point makePoint(int x, int y) {
+        struct point temp;
+        temp.x = x;
+        temp.y = y;
+        return temp;
+}
+
+int main() {
+        // 声明并初始化一个 point 类型的变量
+        struct point p = makePoint(1, 2);
+
+        printf("p.x = %d, p.y = %d\n", p.x, p.y);
+
+        return 0;
+}
+```
+
+###### 2.2 结构体作为参数
+
+结构体作为参数时，语法如下（和基本类型变量的定义没有太大区别）。
+
+```clike
+#include <stdio.h>
+
+struct point {
+        int x;
+        int y;
+};
+
+// 返回的类型是 point
+struct point makePoint(struct point o) {
+        struct point temp;
+        temp.x = o.x;
+        temp.y = o.y;
+        return temp;
+}
+
+int main() {
+        // 直接声明和初始化一个 point 结构体变量
+        struct point p1 = {1, 2};
+
+        struct point p;
+        
+        p = makePoint(p1);
+
+        printf("p.x = %d, p.y = %d\n", p.x, p.y);
+
+        return 0;
+}
+```
+
+###### 2.3 结构体的传递
+
+结构体作为参数或作为返回值传递时，采用的是值传递的方式，即创建出新的结构体变量，然后复制每个成员变量，如果结构体成员变量数量很大时，这样的传递效率会很低。
+
+从下面代码可以看到，返回的 temp 结构体变量和 main 函数中的变量所在的内存地址不一样，他们是两个不同的变量。
+
+```clike
+#include <stdio.h>
+
+struct point {
+        int x;
+        int y;
+};
+
+// 返回的类型是 point
+struct point makePoint(struct point o) {
+        struct point temp;
+
+        temp.x = o.x;
+        temp.y = o.y;
+
+        printf("makePoint 中的 temp 地址是 %p\n", &temp);
+
+        return temp;
+}
+
+int main() {
+        struct point p1 = {1, 2};
+
+        // 声明并初始化一个 point 类型的变量
+        struct point p;
+
+        p = makePoint(p1);
+
+        printf("main 中的 p 地址是 %p\n", &p);
+
+        return 0;
+}
+```
