@@ -158,6 +158,8 @@ int main() {
 
 从下面代码可以看到，返回的 temp 结构体变量和 main 函数中的变量所在的内存地址不一样，他们是两个不同的变量。
 
+> 理解这一点，对写出高性能程序很有帮助。
+
 ```clike
 #include <stdio.h>
 
@@ -191,3 +193,32 @@ int main() {
         return 0;
 }
 ```
+
+练习；尝试编写代码说明一下，作为参数传递时，也是采用了“复制的”方式。
+
+###### 2.4 结构体指针
+
+如果在函数调用时，传递的结构体很大，使用指针方式效率会更高。
+
+```clike
+#include <stdio.h>
+
+struct point {
+        int x;
+        int y;
+};
+
+void printPoint(struct point * p) {
+        // 与直接通过结构体变量访问成员变量不同，通过指针访问需要使用 -> 符号
+        printf("x = %d, y = %d\n", p->x, p->y);
+}
+
+int main() {
+        struct point p = {1, 2};
+
+        printPoint(&p);
+
+        return 0;
+}
+```
+
