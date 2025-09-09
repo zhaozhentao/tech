@@ -169,6 +169,10 @@ struct point {
 };
 
 // 返回的类型是 point
+
+// struct point o
+// o.x = p1.x
+// o.y = p1.y
 struct point makePoint(struct point o) {
         struct point temp;
 
@@ -186,6 +190,9 @@ int main() {
         // 声明并初始化一个 point 类型的变量
         struct point p;
 
+        // 1. p1 作为运行 makePoint 函数参数
+        // 2. 跳转到 makePoint 函数，然后需要先生成参数列表中的 o 变量
+        // 3. 对 makePoint 函数中的 o 变量进行初始化 o.x = p1.x, o.y = p1.y
         p = makePoint(p1);
 
         printf("main 中的 p 地址是 %p\n", &p);
