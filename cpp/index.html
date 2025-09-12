@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>C++</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
@@ -12,11 +12,73 @@
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<style>
+			.small_p {
+				font-size: 0.6em;
+			}
+
+			.left_p {
+				text-align: left;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
+				<section>
+					<h2 data-id="code-title">课程简介</h2>
+
+					<ul>
+						<li>
+							<p class="small_p">本课程将介绍 C/C++ 语言的基础知识，包括 C/C++ 语言的特性、语法、标准库等。</p>
+						</li>
+						<li>
+							<p class="small_p">C++ 语言部分将不涉及面向对象的内容，因此大部分的语法与 C 语言相同。</p>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2 data-id="code-title">课程目标</h2>
+
+					<ul>
+						<li>
+							<p class="small_p">
+								掌握 C/C++ 语法后和标准库后，编写简单的命令行程序，如 ls 命令。
+							</p>
+							<pre data-id="code-animation">
+								<code class="hljs shell" data-trim>
+									$ ls
+									files ...
+								</code>
+							</pre>
+						</li>
+						<li>
+							<p class="small_p">
+								通过 C 语言和单片机，实现电子电路设备控制。
+							</p>
+							<div style="text-align: center;">
+								<img src="./images/image.png" style="width: 400px;">
+							</div>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2 data-id="code-title">Pretty Code</h2>
+					<pre data-id="code-animation"><code class="hljs javascript" data-trim data-line-numbers>
+						import React, { useState } from 'react';
+
+						function Example() {
+						  const [count, setCount] = useState(0);
+
+						  return (
+						    ...
+						  );
+						}
+					</code></pre>
+					<p>Code syntax highlighting courtesy of <a href="https://highlightjs.org/usage/">highlight.js</a>.</p>
+				</section>
 				<section>Slide 2</section>
 			</div>
 		</div>
