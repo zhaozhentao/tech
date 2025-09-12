@@ -134,3 +134,40 @@ int main() {
 1. 定义一个学生结构体，需要包括：学号（整型），姓名。
 2. 用一个结构数组记录以下几个学生信息：(学号:1，姓名：小明)、(学号: 2，姓名：小红)、（学号: 3，姓名: 小白）
 3. 编写一个函数，接收两个参数，一个是结构体数组，一个是学号，返回学号等于参数中的学号的结构体指针。
+
+答案:
+
+```clike
+#include <stdio.h>
+
+// 定义结构体包含的字段
+struct student {
+        char* name;
+        int number;
+};
+
+struct student * find(struct student students[], int length, int number) {
+        for (int i = 0; i < length; i++) {
+                if (students[i].number == number) {
+                        return &students[i];
+                }
+        }
+
+        return NULL;
+}
+
+int main() {
+        // 声明并初始化一个学生结构的数组
+        struct student students[] = {
+                {"小明", 10},
+                {"小黄", 11},
+                {"小黄狗", 12}
+        };
+
+        struct student *p = find(students, 3, 11);
+
+        printf("name is %s number is %d\n", p->name, p->number);
+
+        return 0;
+}
+```
