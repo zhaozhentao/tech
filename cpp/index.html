@@ -17,8 +17,27 @@
 				font-size: 0.6em;
 			}
 
+			.small_p2 {
+				font-size: 0.4em;
+			}
+
 			.left_p {
 				text-align: left;
+			}
+
+			.title {
+				font-size: 32px;
+			}
+
+			.sub_title {
+				font-size: 26px;
+				text-align: left;
+			}
+
+			.content {
+				font-size: 20px;
+				text-align: left;
+				line-height: 1.5;
 			}
 		</style>
 	</head>
@@ -83,7 +102,50 @@
 				</section>
 
 				<section>
+					<section>
+						<p class="title">像黑客一样使用命令行 --- Linux 命令行入门</p>
 
+						<div>
+							<p class="sub_title">
+								1. Linux 文件系统树
+							</p>
+
+							<p class="content">
+								以根目录（/）为起点的树形结构：Linux 文件系统采用单一的根目录，所有的文件和目录都挂载在根目录下的不同位置。例如，“/bin” 目录存放着基本的用户命令，像 “ls”“cp” 等命令的可执行文件都在这里；“/etc” 目录主要存放系统的配置文件，如网络配置文件 “/etc/network/interfaces”（在基于 Debian 的系统中）。
+								分区挂载灵活：可以将不同的分区挂载到根目录下的不同子目录。例如，用户可以将一个专门用于存储用户数据的分区挂载到 “/home” 目录下，这样所有用户的主目录就存储在这个分区中。
+							</p>
+						</div>
+
+						<div style="text-align: center">
+							<img src="./images/1cli/img.png">
+						</div>
+					</section>
+
+					<section style="text-align: left;">
+						<p class="sub_title">
+							2. Windows 文件系统
+						</p>
+
+						<p class="content">
+							Windows 文件系统采用磁盘分区的方式来组织文件，每个磁盘分区都对应一个磁盘驱动器，磁盘驱动器下可以包含多个目录，每个目录可以包含多个文件。
+						</p>
+					</section>
+				</section>
+
+				<section>
+						<p class="title">文件路径</p>
+
+						<p class="sub_title">1. 绝对路径</p>
+
+						<p class="content">
+							在 Linux 中，绝对路径是指从根目录（/）开始，通过一系列目录和文件名组成的路径。绝对路径的格式为：`/目录1/目录2/.../文件名` 。
+						</p>
+
+						<p class="sub_title">2. 相对路径</p>
+
+						<p class="content">
+							在 Linux 中，相对路径是指相对于当前目录的路径。相对路径的格式为：`./当前目录/目录1/目录2/.../文件名` 。
+						</p>
 				</section>
 
 				<section>
