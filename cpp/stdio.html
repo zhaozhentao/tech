@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>C++</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<style>
+			.small_p {
+				font-size: 0.6em;
+			}
+
+			.small_p2 {
+				font-size: 0.4em;
+			}
+
+			.left_p {
+				text-align: left;
+			}
+
+			.title {
+				font-size: 32px;
+			}
+
+			.sub_title {
+				font-size: 26px;
+				text-align: left;
+			}
+
+			.content {
+				font-size: 20px;
+				text-align: left;
+				line-height: 1.5 !important;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<p class="title">第 7 章 输入与输出</h4>
+				</section>
+
+				<section>
+					<section>	
+						<p class="sub_title">
+							标准输入/标准输出简介
+						</p>
+
+						<p class="content">
+							前面学习的程序中，我们使用 printf 来向屏幕打印信息，其实就是在使用 <strong>stdout 标准输出</strong>。
+							计算机科学中三个极其重要的基础概念：标准输入（stdin）、标准输出（stdout） 和 标准错误（stderr）。
+						</p>
+
+						<p class="content">
+							简单的说，一个进程，天然就需要有接受输入和产生输出的需求（反过来想一下，如果一个程序既不接受输入，也不会产生输出，相当于没有产生任何影响，那这个程序还有什么意义？）。
+						</p>
+
+						<p class="content">
+							所以，就需要有一个约定，来规定进程应该从哪里获得输入，进程的输出应该输出到哪里，这个约定就是一个"标准"。
+						</p>
+					</section>
+
+					<section>
+						<p class="sub_title">
+							标准输入
+						</p>
+
+						<p class="content">
+							是程序读取输入数据的默认通道，通常是用户的键盘。
+						</p>
+
+						<p class="sub_title">
+							标准输出
+						</p>
+
+						<p class="content">
+							是程序输出正常结果和数据的默认通道，通常是终端屏幕（Console/Terminal）。
+						</p>
+
+						<p class="sub_title">
+							标准错误
+						</p>
+
+						<p class="content">
+							是程序输出错误消息、警告和诊断信息的专用通道。和标准输出一样，默认也是终端屏幕。
+						</p>
+
+						<p class="content">
+							接下来，我们将通过库函数来认识一下上面提到的 <strong>标准输入</strong> / <strong>标准输出</strong> / <strong>标准错误</strong>。
+						</p>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
