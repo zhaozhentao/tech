@@ -94,9 +94,32 @@
 						</p>
 
 						<p class="content">
-							接下来，我们将通过库函数来认识一下上面提到的 <strong>标准输入</strong> / <strong>标准输出</strong> / <strong>标准错误</strong>。
+							接下来，我们将通过库函数来认识一下 <strong>标准输入</strong> / <strong>标准输出</strong> / <strong>标准错误</strong>。
 						</p>
 					</section>
+				</section>
+
+				<section>
+					<p class="sub_title">标准输入</p>
+
+					<p class="content">
+						最简单的从 <strong>标准输入</strong> 获取数据的方式就是使用 <strong>getchar</strong> 函数，该函数每次从键盘（默认）中读取一个字符。
+					</p>
+					 
+					<pre data-id="code-animation" style="margin: 0; width: 100%;">
+						<code class="hljs c" data-trim>
+							#include &lt;stdio.h&gt;
+
+							int main() {
+								// 从标准输入读取一个字符
+								char c = getchar();
+
+								printf("读取到的是 %c\n", c);
+
+								return 0;
+							}
+						</code>
+					</pre>
 				</section>
 			</div>
 		</div>
