@@ -100,26 +100,100 @@
 				</section>
 
 				<section>
-					<p class="sub_title">标准输入</p>
+					<section>
+						<p class="sub_title">标准输入</p>
 
-					<p class="content">
-						最简单的从 <strong>标准输入</strong> 获取数据的方式就是使用 <strong>getchar</strong> 函数，该函数每次从键盘（默认）中读取一个字符。
-					</p>
-					 
-					<pre data-id="code-animation" style="margin: 0; width: 100%;">
-						<code class="hljs c" data-trim>
-							#include &lt;stdio.h&gt;
+						<p class="content">
+							最简单的从 <strong>标准输入</strong> 获取数据的方式就是使用 <strong>getchar</strong> 函数，该函数每次从键盘（默认）中读取一个字符。
+						</p>
+						
+						<br/>
 
-							int main() {
-								// 从标准输入读取一个字符
-								char c = getchar();
+						<pre data-id="code-animation" style="margin: 0; width: 100%;">
+							<code class="hljs c" data-trim>
+								#include &lt;stdio.h&gt;
 
-								printf("读取到的是 %c\n", c);
+								int main() {
+									// 从标准输入读取一个字符
+									char c = getchar();
 
-								return 0;
-							}
-						</code>
-					</pre>
+									printf("读取到的是 %c\n", c);
+
+									return 0;
+								}
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<p class="sub_title">认识 EOF</p>
+
+						<p class="content">
+							getchar 函数在每次被调用的时候返回下一个输入的字符，如果遇到文件结束时（到目前为止，我们的标准输入还是键盘，未涉及文件），返回 
+							<strong>EOF（End Of File，在头文件 stdio.h 中定义，其值是 -1）。</strong>
+						</p>
+
+						<p class="content">
+							下面的程序在启动后，我们按下 <strong>Ctrl + d（向标准输入发送一个 EOF）</strong>，可以看到程序会输出 -1。EOF 常用来检测是否读完一个文件。
+						</p>
+
+						<pre data-id="code-animation" style="margin: 0; width: 100%;">
+							<code class="hljs c" data-trim>
+								#include &lt;stdio.h&gt;
+
+								int main() {
+									// 从标准输入读取一个字符
+									int c = getchar();
+
+									printf("读取到的是 %d\n", c);
+
+									return 0;
+								}
+							</code>
+						</pre>
+					</section>
+
+					<section>
+						<p class="sub_title">改变标准输入（重定向）</p>
+
+						<p class="content">
+							既然说 <strong>标准输入</strong> 是一种约定，默认是从键盘获取，那么我们是否不从键盘中读取输入，而从其他地方去读取呢？答案是肯定的，
+							在许多情况下，可以使用符号 '<' 让一个文件代替键盘作为进程的标准输入。
+						</p>
+
+						<pre data-id="code-animation" style="margin: 0; width: 100%;">
+							<code class="hljs c" data-trim>
+								#include &lt;stdio.h&gt;
+
+								int main() {
+										char c;
+								
+										while ((c = getchar()) != EOF)
+												putchar(c);
+								
+										return 0;
+								}
+							</code>
+						</pre>
+
+						<p class="content">
+							使用下面的命令编译并运行上面的程序，可以看到 main.c 文件中的内容被打印出来，这是因为此时文件 main.c 作为进程的标准输入，
+							文件中的所有内容被 <strong>putchar </strong> 一个个字符输出到屏幕，直到文件结束（EOF）。
+						</p>
+
+						<pre data-id="code-animation"  style="margin: 0; width: 100%;">
+							<code class="hljs shell" data-trim>
+								$ ./a.out < main.c
+							</code>
+						</pre>
+
+					</section>
+				</section>
+
+				<section>
+					<p class="sub_title">标准输出</p>
+
+					<p class="content"></p>
 				</section>
 			</div>
 		</div>
