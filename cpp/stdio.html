@@ -186,7 +186,23 @@
 								$ ./a.out < main.c
 							</code>
 						</pre>
+					</section>
 
+					<section>
+						<p class="content">
+							除了使用 '<' 符号来实现标准输入的重定向，还可以使用 <strong>管道</strong> 机制来实现。继续使用前面的程序，运行下面的命令，
+							也可以看到相同的效果。第一个命令 <strong>'cat main.c'</strong> 的输出通过 <strong>管道</strong> 符号 '|' 成为了第二个进程的标准输入。
+						</p>
+
+						<pre data-id="code-animation"  style="margin: 0; width: 100%;">
+							<code class="hljs shell" data-trim>
+								$ cat main.c | ./a.out
+							</code>
+						</pre>
+
+						<p class="content">
+							通过这两种方式，在不改变一行源代码的情况下，就完成了标准输入的重定向，可见 Unix/Linux 的强大和设计之美。
+						</p>
 					</section>
 				</section>
 
