@@ -207,9 +207,101 @@
 				</section>
 
 				<section>
-					<p class="sub_title">标准输出</p>
+					<section>
+						<p class="sub_title">标准输出</p>
 
-					<p class="content"></p>
+						<p class="sub_title">格式化输出 printf 函数</p>
+
+						<p class="content">
+							前面的学习中，我们已经多次使用 printf 函数去打印一些信息，这其实就已经是在使用 <strong>stdout 标准输出</strong> 了，正如前面说的，
+							标准输出默认的情况下就是输出到终端屏幕中。
+						</p>
+
+						<pre data-id="code-animation" style="margin: 0; width: 100%;">
+							<code class="hljs c" data-trim>
+								#include &lt;stdio.h&gt;
+
+								int main() {
+										printf("hello world\n");
+								
+										return 0;
+								}
+							</code>
+						</pre>
+
+						<p class="content">
+							printf 函数的完整的描述为：
+						</p>
+
+						<pre data-id="code-animation" style="margin: 0; width: 100%;">
+							<code class="hljs c" data-trim>
+								int printf(char *format, arg1, arg2, ...)
+							</code>
+						</pre>
+
+						<p class="content">
+							其中 format 参数包含普通字符以及待替换为实际数据的 <strong>占位符</strong> ，前面的学习已经多次使用了。
+
+							更多的占位符含义在下一页。
+						</p>
+					</section>
+
+					<section data-markdown style="font-size: 18px;">
+						<script type="text/template">
+							### printf 占位符表
+
+							| 占位符 | 数据类型 | 说明 | 示例 |
+							|--------|----------|------|------|
+							| `%d` | int | 十进制整数 | `printf("%d", 123)` → `123` |
+							| `%i` | int | 十进制整数（同%d） | `printf("%i", 123)` → `123` |
+							| `%o` | int | 八进制整数 | `printf("%o", 123)` → `173` |
+							| `%x` | int | 十六进制整数（小写） | `printf("%x", 123)` → `7b` |
+							| `%X` | int | 十六进制整数（大写） | `printf("%X", 123)` → `7B` |
+							| `%u` | unsigned int | 无符号十进制整数 | `printf("%u", 123)` → `123` |
+							| `%c` | char | 单个字符 | `printf("%c", 'A')` → `A` |
+							| `%s` | char* | 字符串 | `printf("%s", "hello")` → `hello` |
+							| `%f` | float/double | 浮点数（默认6位小数） | `printf("%f", 3.14)` → `3.140000` |
+							| `%e` | float/double | 科学计数法（小写e） | `printf("%e", 3.14)` → `3.140000e+00` |
+							| `%E` | float/double | 科学计数法（大写E） | `printf("%E", 3.14)` → `3.140000E+00` |
+							| `%g` | float/double | 自动选择%f或%e | `printf("%g", 3.14)` → `3.14` |
+							| `%G` | float/double | 自动选择%f或%E | `printf("%G", 3.14)` → `3.14` |
+							| `%p` | void* | 指针地址 | `printf("%p", &var)` → `0x7fff5fbff8ac` |
+							| `%n` | int* | 已输出字符数 | `printf("hello%n", &count)` → count=5 |
+							| `%%` | - | 输出%字符 | `printf("%%")` → `%` |
+						</script>
+					</section>
+
+					<section>
+						<p class="sub_title">
+							标准输出的重定向
+						</p>
+
+						<p class="content">
+							与标准输入可以重定向一样，标准输出也可以重定向，使程序打印的内容，输出其他地方。。
+						</p>
+
+						<pre data-id="code-animation" style="margin: 0; width: 100%;">
+							<code class="hljs c" data-trim>
+								#include &lt;stdio.h&gt;
+
+								int main() {
+										printf("hello world\n");
+								
+										return 0;
+								}
+							</code>
+						</pre>
+
+						<p class="content">
+							编译上面的程序，并按下面的命令执行程序，就可以看到原本输出到屏幕的 hello world 被输出到了 <strong>output </strong> 文件中。'>' 符是标准输出重定向的方法之一。
+						</p>
+
+						<pre data-id="code-animation"  style="margin: 0; width: 100%;">
+							<code class="hljs shell" data-trim>
+								$ ./a.out > output
+							</code>
+						</pre>
+					</section>
 				</section>
 			</div>
 		</div>
