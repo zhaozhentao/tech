@@ -301,6 +301,16 @@
 								$ ./a.out > output
 							</code>
 						</pre>
+
+						<p class="content">
+							使用管道符 '|' 也可以实现标准输出的重定向，下面的命令把 hello world 输出到后面一个命令 <strong>wc -l</strong> 中，该命令会统计文本的行数。
+						</p>
+
+						<pre data-id="code-animation"  style="margin: 0; width: 100%;">
+							<code class="hljs shell" data-trim>
+								$ ./a.out | wc -l
+							</code>
+						</pre>
 					</section>
 				</section>
 			</div>
