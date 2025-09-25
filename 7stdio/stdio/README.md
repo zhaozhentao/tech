@@ -51,7 +51,7 @@ int main()
 
 运行上面的程序，输入 `10 10 u` ，其中 u 是一个字符，scanf 函数会返回 2（表示处理了两个变量），并把 10 和 10 保存到 a 和 b 中。
 
-<img style="width: 400px" src="./images/img.png"> 
+<img style="width: 400px" src="images/img.png"> 
 
 ##### 例子 3
 
@@ -76,7 +76,7 @@ int main()
 
 运行时候，输入长度大于 10 的字符串，会导致报错，因为长度超出了 str 数组。
 
-<img style="width: 400px" src="./images/img_1.png"> 
+<img style="width: 400px" src="images/img_1.png"> 
 
 为了处理上面的长度超出问题，也可以这样处理
 
@@ -123,7 +123,7 @@ int main()
 
 运行程序，并按照下图输入，会看到打印的结果。
 
-<img style="width: 400px" src="./images/img_2.png"> 
+<img style="width: 400px" src="images/img_2.png"> 
 
 这里需要说明的是：
 
