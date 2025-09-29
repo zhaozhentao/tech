@@ -32,9 +32,9 @@ scanf 碰到某些输入无法与指定格式匹配时，函数将会结束，�
 
 int main()
 {
-  int a;
-  int b;
-  int c;
+  int a = 0;
+  int b = 0;
+  int c = 0;
   int count;
 
   count = scanf("%d %d %d\n", &a, &b, &c);
