@@ -37,8 +37,79 @@ int main() {
 
 想要把标准错误也重定向到文件中，需要使用 `2>` 重定向标准错误。
 
-<img src="./images/img_2.png" width="300px" />
+<img src="./images/img_2.png" width="340px" />
 
 #### exit
+
+exit 用于终止程序，参数 exit_code 表示退出码，默认为 0，表示正常退出，非 0 表示异常退出。在没有学习 exit 函数之前，如果要返回一个错误码给父进程(运行 ./a.out 的 shell)，
+我们只能在 main 函数中 return 非 0 值，像下面的代码。
+
+```clike
+int createError() {
+    return 1;
+}
+
+int main() {
+    int code;
+    
+    code = createError();
+    
+    if (code != 0) {
+        return code;
+    }
+
+    return 0;
+}
+```
+
+有了 exit 函数，我们就可以在 main 函数以外的函数调用直接退出程序，而不需要在 main 函数中返回错误码。
+
+```clike
+#include <stdio.h>
+
+void func() {
+    exit(1);
+}
+
+int main() {
+    func();
+
+    printf("main\n");
+
+    return 0;
+}
+```
+
+```clike
+#include <stdio.h>
+#include <stdlib.h>
+
+// 这里我们第一次使用 main 函数的参数 argc 表示参数个数，argv[] 表示参数数组
+int main(int argc, char *argv[]) {
+    // 检查命令行参数
+    if (argc < 2) {
+        printf("用法: %s <文件名>\n", argv[0]);
+        exit(1);
+    }
+    
+    // 打开文件
+    FILE *file = fopen(argv[1], "r");
+    if (file == NULL) {
+        printf("错误: 无法打开文件 '%s'\n", argv[1]);
+        exit(1);
+    }
+    
+    // 读取文件内容并输出到标准输出
+    int ch;
+    while ((ch = getc(file)) != EOF) {
+        putchar(ch);
+    }
+    
+    // 关闭文件
+    fclose(file);
+    
+    return 0;
+}
+```
 
 
