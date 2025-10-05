@@ -132,7 +132,17 @@ char *fgets(char *line, int maxline, FILE *fp);
 fgets 函数从 fp 指向的文件中读取下一个输入行（包括换行符），并将其存储在 line 中。参数 maxline 表示 line 的最大长度。
 fgets函数返回一个指向 line 的指针。如果到达文件末尾或发生错误，则返回 NULL。
 
-下面使用 fgets 函数来实现 cat 命令。
+##### fputs 函数
+
+与 fgets 函数类似，标准库还提供了一个输出函数 fputs，函数的参数如下：
+
+```clike
+int fputs(char *line, FILE *fp);
+ ```
+
+fputs 函数将 line 中的内容写入 fp 指向的文件中。如果发生错误，则返回 EOF，否则返回非负数。
+
+下面使用 fgets 和 fputs 函数来实现 cat 命令。
 
 ```clike
 #include <stdio.h>
@@ -155,7 +165,7 @@ int main(int argc, char *argv[]) {
         }
 
         while (fgets(line, sizeof(100), file) != NULL) {
-                printf("%s", line);
+                fputs(line, stdout);
         }
 
         fclose(file);
