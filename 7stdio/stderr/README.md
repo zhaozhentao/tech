@@ -142,6 +142,8 @@ int fputs(char *line, FILE *fp);
 
 fputs 函数将 line 中的内容写入 fp 指向的文件中。如果发生错误，则返回 EOF，否则返回非负数。
 
+##### 应用
+
 下面使用 fgets 和 fputs 函数来实现 cat 命令。
 
 ```clike
