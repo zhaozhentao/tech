@@ -119,4 +119,47 @@ int main(int argc, char *argv[]) {
 }
 ```
 
+#### 7.7 行输入和行输出
 
+##### fgets 函数
+
+标准库提供了一个输入函数 fget，函数的参数如下：
+
+```clike
+char *fgets(char *line, int maxline, FILE *fp);
+```
+
+fgets 函数从 fp 指向的文件中读取下一个输入行（包括换行符），并将其存储在 line 中。参数 maxline 表示 line 的最大长度。
+fgets函数返回一个指向 line 的指针。如果到达文件末尾或发生错误，则返回 NULL。
+
+下面使用 fgets 函数来实现 cat 命令。
+
+```clike
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[]) {
+        char line[100];
+
+            // 检查命令行参数
+        if (argc < 2) {
+                printf("用法: %s <文件名>\n", argv[0]);
+                exit(1);
+        }
+
+        FILE *file = fopen(argv[1], "r");
+
+        if (file == NULL) {
+                fprintf(stderr, "打开文件失败\n");
+                exit(1);
+        }
+
+        while (fgets(line, sizeof(100), file) != NULL) {
+                printf("%s", line);
+        }
+
+        fclose(file);
+
+        return 0;
+}
+```
