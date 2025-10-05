@@ -85,6 +85,8 @@ int main() {
 }
 ```
 
+结合 stderr 和 exit 函数，一个简单的 cat 命令最终的实现如下。
+
 ```clike
 #include <stdio.h>
 #include <stdlib.h>
