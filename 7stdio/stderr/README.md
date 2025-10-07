@@ -178,3 +178,57 @@ int main(int argc, char *argv[]) {
 
 #### 7.8 其他函数
 
+##### 字符串操作函数
+
+标准库中，字符串函数定在在 string.h 中，其中包括的函数可以参考 [string.h](https://www.runoob.com/cprogramming/c-standard-library-string-h.html)，
+可以尝试阅读文档并使用相关函数。下面介绍几个常用的字符串操作函数。
+
+###### 1 strlen
+
+该函数用于返回字符串长度，函数声明如下：
+
+```clike
+size_t strlen(const char *str)
+```
+
+使用例子
+
+```clike
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char str[] = "hello world";
+    
+    printf("字符串长度为：%d\n", strlen(str));
+    
+    return 0;
+}
+```
+
+###### 2 strcpy
+
+该函数用于将字符串 dest 复制到 src 中，函数声明如下：
+
+```clike
+// dest 意为目标，src 意为源，所以是把源字符串拷贝到目标字符串的数组中
+char *strcpy(char *dest, const char *src)
+```
+
+使用例子
+
+```clike
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char src[] = "hello world";
+    char dest[100];
+    
+    strcpy(dest, src);
+    
+    printf("复制后的字符串为：%s\n", dest);
+    
+    return 0;
+}
+```
