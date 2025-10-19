@@ -166,7 +166,7 @@ int main(int argc, char *argv[]) {
                 exit(1);
         }
 
-        while (fgets(line, sizeof(100), file) != NULL) {
+        while (fgets(line, sizeof(line), file) != NULL) {
                 fputs(line, stdout);
         }
 
