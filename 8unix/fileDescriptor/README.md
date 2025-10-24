@@ -46,3 +46,92 @@ $ ./a.out < main.c
 ```
 
 > 注意上面的程序，因为标准输入和标准输出本来就已经打开，所以程序中没有打开文件的动作。
+
+#### 8.3 open、creat、close 和 unlink
+
+##### open
+
+与标准库函数类似，Unix/Linux 提供 open 函数用于打开文件（对应标准库 fopen）。函数的定义如下。
+
+```clike
+// 注意这里和书本的不一致
+int open(const char *pathname, int flags);
+```
+
+* pathname 是要打开的文件路径。
+
+* flags 是打开文件的方式，例如只读、只写、读写等。常用的标志有：
+    * O_RDONLY：只读打开文件。
+    * O_WRONLY：只写打开文件。
+    * O_RDWR：读写打开文件。
+    * O_CREAT：如果文件不存在，则创建文件。
+    * O_EXCL：与 O_CREAT 一起使用，如果文件已存在，则返回错误。
+    * O_TRUNC：如果文件已存在，清空文件内容。
+
+> 可以通过命令行 man 2 open ，查看 open 函数的说明，看不懂英文可以用 AI 翻译。
+
+##### creat 
+
+creat 函数用于创建一个新文件，函数的定义如下。
+
+```clike
+int creat(const char *pathname, mode_t mode);
+```
+
+* pathname 是要创建的文件路径。
+
+* mode 是文件的权限模式，例如 0644 表示文件所有者有读写权限，其他用户只有读权限。
+
+##### close
+
+close 函数相对简单，对应标准库函数 fclose。函数的定义如下。
+
+```clike
+int close(int fd);
+```
+
+下面我们使用前面学到的系统调用来实现一个 cp 命令。
+
+```clike
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int main(int argc, char **argv) {
+    int f1, f2;
+    long n;
+    char buf[1024];
+
+    if (argc != 3) {
+        printf("请输入两个文件路径\n");
+        exit(1);
+    }
+
+    // 打开原文件
+    f1 = open(argv[1], O_RDONLY);
+
+    if (f1 < 0) {
+        printf("打开文件 %s 失败\n", argv[1]);
+        exit(1);
+    }
+
+    // 创建新文件
+    f2 = creat(argv[2], 0666);
+
+    if (f2 < 0) {
+        printf("创建文件 %s 失败\n", argv[2]);
+        exit(1);
+    }
+
+    while ((n = read(f1, buf, sizeof buf)) > 0) {
+        // 把原文件的内容复制到新文件中
+        write(f2, buf, n);
+    }
+
+    close(f1);
+    close(f2);
+
+    return 0;
+}
+```
