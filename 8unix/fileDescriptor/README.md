@@ -26,6 +26,22 @@ int main(int argc, char **argv) {
 
 > 标准库使用的是 FILE，Unix/Linux 提供的系统调用使用文件描述符，注意这个区别。
 
+```clike
+#include <stdio.h>
+
+int main() {
+    FILE *fp;
+
+    fp = fopen("/sys/class/leds/orangepi:green:status/brightness", "w");
+
+    putc('1', fp);
+
+    fclose(fp);
+
+    return 0;
+}
+```
+
 shell 运行一个程序时，会打开三个文件描述符：标准输入（0）、标准输出（1）和标准错误输出（2）。
 
 > 可以在 /proc/进程id/fd 中看到上面提到的这三个文件描述符。
