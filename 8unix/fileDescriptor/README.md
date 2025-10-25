@@ -2,6 +2,24 @@
 
 在 Unix/Linux 操作系统中，所有的外围设备（包括键盘和显示器）都被看作是文件系统中的文件，所有的输入/输出都要通过读文件或写文件来完成。
 
+```clike
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+int main(int argc, char **argv) {
+    int fd;
+
+    fd = open("/sys/class/leds/orangepi:green:status/brightness", O_WRONLY);
+
+    write(fd, "1", 1);
+
+    close(fd);
+
+    return 0;
+}
+```
+
 > 开发板演示通过文件点灯
 
 通常情况下，读写文件之前都需要先打开文件，如果操作正常，操作系统会返回一个小的非负整数，该整数称为文件描述符，后续的读写操作都要通过该文件描述符来完成。

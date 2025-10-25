@@ -5,8 +5,7 @@
 使用前面学习过的 `vim` 编辑器，创建一个名为 `main.cpp` 的文件。
 
 ```bash
-$ vim main.cpp
-```
+$ vim main.cpp ```
 
 并输入如下代码：
 
@@ -97,39 +96,3 @@ int main() {
     return 0;
 }
 ```
-
-##### 2.4 运算符与表达式（课本第二章第二节）
-
-C/C++ 支持多种运算符，比如我们数学中的加减乘除，我们先以这些运算符为例，来看看在代码中如何使用。
-
-```clike
-#include <iostream>
-
-using namespace std;
-
-int main() {
-    int a = 10;
-    int b = 20;
-    int c;
-    
-    // 把 a + b 后的结果赋值到 c 中
-    c = a + b;
-    cout << "a + b = " << c << endl;
-    
-    // 把 b - a 后的结果赋值到 c 中
-    c = b - a;
-    cout << "b - a = " << c << endl;
-    
-    // 把 a * b 后的结果赋值到 c 中
-    c = a * b;
-    cout << "a * b = " << c << endl;
-    
-    // 把 b / a 后的结果赋值到 c 中
-    c = b / a;
-    cout << "b / a = " << c << endl;
-    
-    return 0;
-}
-```
-
-> 上面使用到的 cout 打印将在后面的学习中介绍，现在只需要知道这样可以打印出结果就可以。
