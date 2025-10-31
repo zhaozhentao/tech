@@ -55,7 +55,6 @@ int main() {
 ```clike
 #include <stdio.h>
 #include <dirent.h>  // 目录操作相关函数
-#include <string.h>  // 用于字符串处理
 
 // 读取并打印目录下的所有条目（文件/子目录）
 void read_directory(const char *dir_path) {
@@ -69,29 +68,8 @@ void read_directory(const char *dir_path) {
     struct dirent *entry;  // 用于存储目录条目信息
     // 循环读取目录中的每个条目
     while ((entry = readdir(dir)) != NULL) {
-        // 跳过 "."（当前目录）和 ".."（上级目录）
-        if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0) {
-            continue;
-        }
-
         // 打印条目名称
-        printf("名称: %s\t", entry->d_name);
-
-        // 根据条目的类型进行区分（可选）
-        switch (entry->d_type) {
-            case DT_DIR:   // 子目录
-                printf("类型: 目录\n");
-                break;
-            case DT_REG:   // 普通文件
-                printf("类型: 普通文件\n");
-                break;
-            case DT_LNK:   // 符号链接
-                printf("类型: 符号链接\n");
-                break;
-            default:       // 其他类型（如设备文件等）
-                printf("类型: 其他\n");
-                break;
-        }
+        printf("%s\t", entry->d_name);
     }
 
     // 关闭目录流
@@ -99,12 +77,11 @@ void read_directory(const char *dir_path) {
 }
 
 int main() {
-    const char *dir_path = ".";
-    
+    const char *dir_path = ".";  // 读取当前目录
+
     printf("读取目录: %s\n", dir_path);
-    
     read_directory(dir_path);
-    
+
     return 0;
 }
 ```
