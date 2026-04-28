@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Openclaw 与 SDK 集成</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<style>
+			.small_p {
+				font-size: 0.6em;
+			}
+		
+			.small_p2 {
+				font-size: 0.4em;
+			}
+		
+			.left_p {
+				text-align: left;
+			}
+		
+			.title {
+				font-size: 32px;
+			}
+		
+			.sub_title {
+				font-size: 48px;
+				text-align: left;
+			}
+		
+			.content {
+				font-size: 32px;
+				text-align: left;
+				line-height: 1.8 !important;
+				color: #34495e;
+			}
+		
+			.ref {
+				border-radius: 2px; 
+				color: #e96900; 
+				margin: 0 2px; 
+				background-color: #f8f8f8; 
+				padding: 3px 5px;
+			}
+		
+			.outline-list {
+				font-size: 36px;
+			}
+		
+			.outline-sublist {
+				font-size: 28px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Openclaw 与 SDK 集成</h2>
+				</section>
+				
+				<section>
+					<div class="content">
+						<ol class="outline-list">
+							<li style="margin: 40px 0;">
+								<strong>集成 SDK 的痛点</strong>
+
+								<ul class="outline-sublist" style="margin-top: 20px;">
+									<li>人阅读文档速度慢</li>
+									<li>实施过程容易出错</li>
+									<li>重复劳动，在不同的项目中集成相同的 SDK 花费时间倍增 x N</li>
+								</ul>
+							</li>
+
+							<li style="margin: 40px 0;">
+								<strong>Skills 的开发</strong>
+							</li>
+
+							<li style="margin: 40px 0;">
+								<strong>使用 OpenClaw Skills 解决项目 SDK 集成</strong>
+								<ul class="outline-sublist" style="margin-top: 20px;">
+									<li>案例演示</li>
+								</ul>
+							</li>
+
+							<li style="margin: 40px 0;">
+								<strong>更多的思考...</strong>
+							</li>
+						</ol>
+					</div>
+				</section>
+
+				<section>
+					<section>
+						<p><strong>2. Skills 的开发</strong></p>
+
+						<img src="./images/openclaw/img3.png">
+					</section>
+
+					<section>
+						<img src="./images/openclaw/img4.png">
+					</section>
+
+					<section>
+						<img src="./images/openclaw/img5.png">
+					</section>
+
+					<section>
+						<span>触发条件</span>
+
+						<img src="./images/openclaw/img6.png">
+					</section>
+
+					<section>
+						<span>功能说明</span>
+
+						<img src="./images/openclaw/img7.png">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<p><strong>3. 案例演示</strong></p>
+
+						<img src="./images/openclaw/img.png">
+					</section>
+
+					<section>
+						<img src="./images/openclaw/img2.png">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<ol class="outline-list">
+							<li style="margin: 40px 0;">
+								<strong>更多的思考...</strong>
+								<p>
+									安装和使用 OPENCLAW 遇到过的问题:
+								</p>
+
+								<ul class="outline-sublist" style="margin-top: 20px;">
+									<li>1. 安装失败</li>
+									<li>2. 升级失败</li>
+									<li>3. 安全问题</li>
+								</ul>
+							</li>
+						</ol>
+					</section>
+
+					<section>
+						<p><strong>Skill 升级</strong></p>
+
+						<img src="./images/openclaw/img8.png">
+					</section>
+
+					<section>
+						<p><strong>体验</strong></p>
+
+						<img src="./images/openclaw/img9.png">
+					</section>
+
+					<section>
+						<p><strong>成果</strong></p>
+
+						<img src="./images/openclaw/img11.png">
+					</section>
+
+					<section>
+						<p><strong>不是每台电脑都需要有 Openclaw</strong></p>
+
+						<img src="./images/openclaw/img12.png">
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
