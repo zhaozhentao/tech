@@ -62,7 +62,77 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<h2>AI</h2>
+					<h2>AI相关分享</h2>
+				</section>
+
+				<section>
+					<section>
+						<p style="text-align: left">
+							<strong>负责的业务系统一：标签管理系统</strong>
+						</p>
+
+						<p style="font-size: 22px; text-align: left">
+							标签系统主要管理数据标签，用户群等数据。
+
+							<br/>
+							<br/>
+							数据标签可以简单理解为对数据的分类，比如用户标签、商品标签、订单标签等。
+													
+							<table style="font-size: 18px; border-collapse: collapse; margin-top: 10px; width: 100%;">
+								<tr>
+									<th style="border: 1px solid #ccc; padding: 8px; background-color: #f2f2f2;">数据id</th>
+									<th style="border: 1px solid #ccc; padding: 8px; background-color: #f2f2f2;">数据名</th>
+									<th style="border: 1px solid #ccc; padding: 8px; background-color: #f2f2f2;">标签id</th>
+								</tr>
+								<tr>
+									<td style="border: 1px solid #ccc; padding: 8px;">用户1 id</td>
+									<td style="border: 1px solid #ccc; padding: 8px;">用户1 姓名</td>
+									<td style="border: 1px solid #ccc; padding: 8px;">学历</td>
+								</tr>
+								<tr>
+									<td style="border: 1px solid #ccc; padding: 8px;">门店1 id</td>
+									<td style="border: 1px solid #ccc; padding: 8px;">门店1 店名</td>
+									<td style="border: 1px solid #ccc; padding: 8px;">门店等级</td>
+								</tr>
+							</table>
+						</p>
+
+						<p style="font-size: 22px; text-align: left">
+							其中，统计的数据来源有多种方式：数据湖，用户导入，接口导入等。生成的标签数据，目前可以通过接口，或数据湖创建视图的方式获取。
+						</p>
+					</section>
+
+					<section>
+						<p style="text-align: left">
+							<strong>负责的业务系统二：大客户BCRM系统</strong>
+						</p>
+
+						<p style="font-size: 22px; text-align: left">
+							BCRM 系统主要包括以下功能。
+							<br/><br/>
+							线索管理：线索的增删查改、线索转商机、线索分配跟进人、招标信息转线索。
+							<br/>
+							招标信息管理：招标信息录入，历史中标记录，招标附件管理，招标信息转线索。
+							<br/>
+							客户管理：客户的增删查改、客户跟进记录、客户公海池管理。
+							<br/>
+							商机管理：商机的增删查改、商机联系人变更、立项信息注册、按阶段统计商机数量和金额。
+							<br/>
+							授权管理：授权的新增/延续，电子签章对接，盖章文件上传下载、审批流对接。
+							<br/>
+							另外还有销售看板，CRM 报表等简单的查询模块。
+						</p>
+					</section>
+
+					<section>
+						<p style="text-align: left">
+							<strong>负责的业务系统三：MDS主数据</strong>
+						</p>
+
+						<p style="font-size: 22px; text-align: left">
+							接收来自各个上游的数据，然后按需要分发到各个下游业务系统。主要通过消息队列进行数据分发。
+						</p>
+					</section>
 				</section>
 
 				<section>
@@ -189,6 +259,11 @@
 
 						<img src="./images/ai/img_9.png">
 					</section>
+				</section>
+
+				<section>
+					<p style="font-size: 22px; text-align: left">
+					</p>
 				</section>
 			</div>
 		</div>
